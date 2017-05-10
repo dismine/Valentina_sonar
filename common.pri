@@ -701,6 +701,12 @@ CLANG_DEBUG_CXXFLAGS += \
     -fcolor-diagnostics \
     -fms-extensions # Need for pragma message
 
+unix:!macx{
+    #Clang on MAC OS X doesn't support all options
+    CLANG_DEBUG_CXXFLAGS += \
+        -Warc-abi
+}
+
 ICC_DEBUG_CXXFLAGS += \
     $$ISYSTEM \ # Ignore warnings Qt headers.
     -Wcomment \
